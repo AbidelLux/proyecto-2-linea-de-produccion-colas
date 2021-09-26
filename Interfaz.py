@@ -11,6 +11,13 @@ def salir():
 
     if messagebox.askquestion("Salir","Desea Salir?")=="yes":
         root.destroy()
+def abrirXMLmaq():
+    ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
+    print(ruta)
+
+def abrirXMLsim():
+    ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
+    print(ruta)
 
 root.title('Simulacion')
 #root.resizable(0,0)#ancho, largo (boolean redimencion)
@@ -26,13 +33,18 @@ fr.config(bg="white",width="650",height="350")
 #label1 = Label(fr,image=Imagen) #para usar label variable
 #label1.place(x="100",y="200")
 
-Label(fr,text = "Label1",font=("Arial","18"),bg="white").grid(row="0",column="0")
+Label(fr,text = "Tiempo de Simulacion",font=("Arial","12"),bg="white").grid(row="0",column="0")
 texto = Entry(fr,font=("Arial","18"))
 texto.grid(row="0", column="1")
 
+Label(fr,text="Productos Disponibles para simulacion",font=("Arial Black","14"),bg="white").grid(row="0",column="0")
+Componentes = Text(fr)
+Componentes.grid(row=3,column=0,stycky="e",padx=10,pady=10)
+Scrollbar(fr,command=Text.yview)
+
 archivoMenu = Menu(barraMenu,tearoff=0)
-archivoMenu.add_command(label="Cargar Archivo Maquina")
-archivoMenu.add_command(label="Cargar Archivo Simulacion")
+archivoMenu.add_command(label="Cargar Archivo Maquina",command=abrirXMLmaq)
+archivoMenu.add_command(label="Cargar Archivo Simulacion",command=abrirXMLsim)
 archivoMenu.add_separator()
 
 archivoMenu.add_command(label="Salir",command=salir)
