@@ -2,10 +2,12 @@ from tkinter import *
 from tkinter import  messagebox
 from tkinter import filedialog
 from tkinter import ttk
+from XML import XML
 root  = Tk()
 #------------------------------------------------------------------------------------------------------------------------
 def infoEstud():
     messagebox.showinfo("Estudiante","Victor Abdiel Lux Juracán\n201403946\nIPC2")
+
 def infoProgram():
     messagebox.showinfo("Acerca de","Simulador de Ensamblaje \n V.4.0")
 def salir():
@@ -15,6 +17,7 @@ def salir():
 def abrirXMLmaq():
     ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
     print(ruta)
+    XML().cargar_xml(ruta,"prueba")
 
 def abrirXMLsim():
     ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
