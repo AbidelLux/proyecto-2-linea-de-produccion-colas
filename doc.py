@@ -1,17 +1,16 @@
 import xml.etree.ElementTree as ET
-from ListaProductos import ListaProductos
 from subListaElaboracion import subListaElaboracion
 import re
 class doc():
-    def cargar_xml(self,rt):
+    def cargar_xml(self,rt,listaProd):
         global cola
-        listaProd = ListaProductos()
+#        listaProd = ListaProductos()
         tree = ET.parse(rt)
         root = tree.getroot()
         print(root.find('CantidadLineasProduccion').text)
             #for elment1 in elemnt.iter('antidadLineasProduccion'):
              #   print('No.elementos=',elment)
-        cont =0
+       # cont =0
         for elment in root.iter('ListadoLineasProduccion'):
             for subelment in elment:
                 print('--->',subelment.find('Numero').text)

@@ -3,7 +3,8 @@ from tkinter import  messagebox
 from tkinter import filedialog
 from tkinter import ttk
 from doc import doc
-
+from ListaProductos import ListaProductos
+listaProd = ListaProductos()
 root  = Tk()
 #------------------------------------------------------------------------------------------------------------------------
 def infoEstud():
@@ -19,7 +20,7 @@ def abrirXMLmaq():
     values = []
     ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos doc","*.xml"),("todos los Archivos","*.*")))
     print(ruta)
-    lista = doc().cargar_xml(ruta)
+    lista = doc().cargar_xml(ruta,listaProd)
     if lista.cabecera is None:
         messagebox.showinfo("Aviso",'Lista Vacia')
     else:
@@ -36,8 +37,8 @@ def abrirXMLsim():
     print(ruta)
 
 def combol():
-    #subListaElb = lista.buscarProd(combo.get())
-    #doc().reporte_cola(subListaElb)
+    subListaElb = listaProd.buscarProd(combo.get())
+    doc().reporte_cola(subListaElb)
     print()
 
 #----------------------------------------------------------------------------------------------------------------------- raiz de interfaz
