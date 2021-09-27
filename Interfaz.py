@@ -17,7 +17,7 @@ def salir():
 def abrirXMLmaq():
     ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
     print(ruta)
-    XML().cargar_xml(ruta,"prueba")
+    XML().cargar_xml(ruta)
 
 def abrirXMLsim():
     ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
