@@ -1,0 +1,4 @@
+digraph R {
+node [shape = record, color = cornflowerblue];
+{rank=same L13C16 L12C22 L13C14 L2C5 L5C5 L8C9 L13C1 L5C8 L11C3 L4C22 L6C15 L10C6 L2C5 }
+ }

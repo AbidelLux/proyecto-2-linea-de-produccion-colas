@@ -33,6 +33,7 @@ class subListaElaboracion():
         node.arriba.abajo = None
         return tipopop1,tipopop2
     def recorrer(self):
+
         if self.cabe is None:
             return
         else:
