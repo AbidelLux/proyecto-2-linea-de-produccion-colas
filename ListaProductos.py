@@ -5,6 +5,8 @@ class nodo_productos():
         self.siguiente = None
         self.anterior = None
 class ListaProductos():
+
+
     def __init__(self):
         self.cabecera = None
 
@@ -28,5 +30,16 @@ class ListaProductos():
             while node is not None:
                 print(node.item1)
                 node = node.siguiente
+
+    def buscarProd(self,prod):
+        if self.cabecera is None:
+            print('la lista esta vacia')
+        else:
+            node =self.cabecera
+            while node is not None:
+                if node.item1 == prod:
+                    return node.item2
+                node = node.siguiente
+
 
 

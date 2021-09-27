@@ -1,18 +1,18 @@
 class nodo_elab():
-    def __init__(self,component,linea):
+    def __init__(self,component):
         self.comp= component
-        self.line=linea
+        #self.line=linea
         self.abajo = None
         self.arriba = None
 class subListaElaboracion():
     def __init__(self):
         self.cabe = None
-    def push(self,compe,linear):
+    def push(self,compe):
         if self.cabe is None:
-            nuevo = nodo_elab(compe,linear)
+            nuevo = nodo_elab(compe)
             self.cabe = nuevo
             return
-        nuevo = nodo_elab(compe,linear)
+        nuevo = nodo_elab(compe)
         nuevo.abajo = self.cabe
         self.cabe.arriba = nuevo
         self.cabe =nuevo

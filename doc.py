@@ -1,7 +1,8 @@
 import xml.etree.ElementTree as ET
 from ListaProductos import ListaProductos
 from subListaElaboracion import subListaElaboracion
-class XML():
+import re
+class doc():
     def cargar_xml(self,rt):
         global cola
         listaProd = ListaProductos()
@@ -19,13 +20,30 @@ class XML():
                 print('***********************************')
 
         for elment1 in root.iter('ListadoProductos'):
-            listaElb = subListaElaboracion()
+
             for subelment in elment1:
+                listaElb = subListaElaboracion()
                 print('--->',subelment.find('nombre').text)
                 print('eleb -->',subelment.find('elaboracion').text)
                 print('================================')
-                #listaElb.push()
-                #cola = listaElab
-                #listaProd.insertar_final(subelment.find('nombre').text,listaElb)
+                txt = subelment.find('elaboracion').text
+                nuevoText = re.sub("p","",txt)
+                x=re.findall(r"(L\d+p?C\d+)",nuevoText)
+                for elb in x:
+                    listaElb.push(elb)
+                cola = listaElb
+                cola.recorrer()
 
-        print("**********************************************")
+                listaProd.insertar_final(subelment.find('nombre').text,cola)
+        return listaProd
+    def reporte_cola(self,lista):
+        if lista.cabe is None:
+            return
+        else:
+            node = lista.cabe
+            while node is not None:
+                print(node.comp)
+                node = node.abajo
+        print()
+
+

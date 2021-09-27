@@ -2,7 +2,8 @@ from tkinter import *
 from tkinter import  messagebox
 from tkinter import filedialog
 from tkinter import ttk
-from XML import XML
+from doc import doc
+
 root  = Tk()
 #------------------------------------------------------------------------------------------------------------------------
 def infoEstud():
@@ -15,13 +16,30 @@ def salir():
     if messagebox.askquestion("Salir","Desea Salir?")=="yes":
         root.destroy()
 def abrirXMLmaq():
-    ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
+    values = []
+    ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos doc","*.xml"),("todos los Archivos","*.*")))
     print(ruta)
-    XML().cargar_xml(ruta)
+    lista = doc().cargar_xml(ruta)
+    if lista.cabecera is None:
+        messagebox.showinfo("Aviso",'Lista Vacia')
+    else:
+        node = lista.cabecera
+        #ingresar productos a combo desde el TDA
+        while node is not None:
+            values.append(node.item1)
+            combo["values"] = values
+            node = node.siguiente
+
 
 def abrirXMLsim():
-    ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos XML","*.xml"),("todos los Archivos","*.*")))
+    ruta = filedialog.askopenfilename(title="Abrir",filetypes=(("archivos doc","*.xml"),("todos los Archivos","*.*")))
     print(ruta)
+
+def combol():
+    #subListaElb = lista.buscarProd(combo.get())
+    #doc().reporte_cola(subListaElb)
+    print()
+
 #----------------------------------------------------------------------------------------------------------------------- raiz de interfaz
 root.title('Simulacion')
 #root.resizable(0,0)#ancho, largo (boolean redimencion)
@@ -43,9 +61,8 @@ texto.grid(row=4, column=4)
 
 
 Label(fr,text="Productos Disponibles para simulacion",font=("Arial Black","14"),bg="white").grid(row=0,column=0)
-combo = ttk.Combobox(fr,values=["prod2","prod1"],state="readonly")
+combo = ttk.Combobox(fr,state="readonly")
 combo.grid(row=1,column=0)
-combo.bind("<<ComboboxSelected>>")
 
 Label(fr,text="Componentes Necesarios",font = ("Arial Black","14"),bg="white").grid(row=2,column=0)
 Componentes = Text(fr)
@@ -76,7 +93,7 @@ archivoMenu.add_command(label="Salir",command=salir)
 
 archivoRepor = Menu(barraMenu,tearoff=0)
 archivoRepor.add_command(label="Reporte Simulacion")
-archivoRepor.add_command(label="Reporte Secuencia de Cola")
+archivoRepor.add_command(label="Reporte Secuencia de Cola",command=combol)
 
 archivoAyuda= Menu(barraMenu,tearoff=0)
 archivoAyuda.add_command(label="Estudiante",command=infoEstud)
