@@ -1,0 +1,13 @@
+<Simulacion>
+    <Nombre>
+        SimulacionUno
+    </Nombre>
+    <ListadoProductos>
+        <Producto>
+            iWatch
+        </Producto>
+        <Producto>
+            Banda Galaxy Fit 2
+        </Producto>
+    </ListadoProductos>
+</Simulacion>

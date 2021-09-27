@@ -22,16 +22,16 @@ class subListaElaboracion():
             return
         if self.cabe.abajo is None:
             tipopop1 = self.cabe.comp
-            tipopop2 = self.cabe.line
+            #tipopop2 = self.cabe.line
             self.cabe = None
-            return tipopop1,tipopop2
+            return tipopop1
         node = self.cabe
         tipopop1=node.comp
-        tipopop2=node.lien
+        #tipopop2=node.lien
         while node.abajo is not None:
             node = node.abajo
         node.arriba.abajo = None
-        return tipopop1,tipopop2
+        return tipopop1
     def recorrer(self):
 
         if self.cabe is None:
