@@ -65,7 +65,7 @@ Label(fr,text="Productos Disponibles para simulacion",font=("Arial Black","14"),
 combo = ttk.Combobox(fr,state="readonly")
 combo.grid(row=1,column=0)
 
-Label(fr,text="Componentes Necesarios",font = ("Arial Black","14"),bg="white").grid(row=2,column=0)
+Label(fr,text="Componentes Necesarios",font = ("Arial Black","14"),bg="white",state="disabled").grid(row=2,column=0)
 Componentes = Text(fr)
 Componentes.grid(row=3,column=0)
 scroll1 = Scrollbar(fr,command=Componentes.yview)
